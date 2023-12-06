@@ -1,4 +1,4 @@
-// lib/dbConnect.js
+// dbConnect.js
 import mongoose from 'mongoose';
 
 async function dbConnect() {
@@ -7,11 +7,10 @@ async function dbConnect() {
   }
 
   try {
-    await mongoose.connect('mongodb+srv://alvinrumbaoa:Senpou@23@cluster0.jublkvz.mongodb.net/?retryWrites=true&w=majority', {
+    await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
+      // Remove deprecated options
     });
     console.log('Connected to MongoDB');
   } catch (error) {
